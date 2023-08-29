@@ -36,6 +36,6 @@ server.listen(
   port,
   host,
   () => {
-    console.log("Servers Running")
+    console.log("Servers Running!")
   }
 );
