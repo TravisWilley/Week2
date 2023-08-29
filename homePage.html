@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 2 HW</title>
+  <style>
+    ol{
+      margin: 0;
+      padding: 0;
+      list-style-type:none;
+    }
+    li {
+      display:inline-block;
+      padding:20px;
+    }
+    *{
+      background-color:grey;
+    }
+    a{
+      color:black;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://unpkg.com/react/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone@7.22.10/babel.min.js"></script>
+</head>
+<body>
+  <div id ="myApp"></div>
+  <script type="text/babel">
+    "use strict";
+    function PList(props){
+      console.log(props);
+      return (
+        <div>
+          <ol>
+            {
+              props.list.map(
+                (item,index) => (
+                  <li key={index}>
+                    <a href={item.address}>
+                      {item.restaurant}
+                    </a>
+                  </li>
+                )
+              )
+            }
+          </ol>
+        </div>
+      );
+    };     
+    $.getJSON(
+      'random', 
+      function(jsonFromJquery) {
+        const myRoot = ReactDOM.createRoot( document.getElementById('myApp') );
+    
+        myRoot.render(
+          <PList list={jsonFromJquery} />
+        );
+      }
+    );
+  </script>
+</body>
+</html>
